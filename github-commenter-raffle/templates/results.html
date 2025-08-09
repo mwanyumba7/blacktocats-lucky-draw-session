@@ -3,19 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raffle Results</title>
+    <title>🎉 Raffle Results - Winner Announcement!</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Raffle Results</h1>
-        <div id="winner-announcement">
-            <h2>Congratulations!</h2>
-            <p>The winner of the Mona plushie is:</p>
-            <h3 id="winner-name">{{ winner_name }}</h3>
-        </div>
-        <button onclick="window.location.href='/'">Back to Raffle</button>
+        <header>
+            <h1>🎊 RAFFLE RESULTS 🎊</h1>
+            <p>The moment we've all been waiting for...</p>
+        </header>
+
+        <main>
+            <!-- Winner Display Section -->
+            <div class="winner-display">
+                <div class="winner-container">
+                    <h2 class="winner-title">🎉 CONGRATULATIONS! 🎉</h2>
+                    <div class="winner-name-container">
+                        <span class="winner-label">The winner of the Mona plushie is:</span>
+                        <h1 class="winner-name">@{{ winner or winner_name }}</h1>
+                    </div>
+                    <p class="winner-prize">You've won the adorable Mona plushie! 🧸</p>
+                    
+                    {% if repo_info %}
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.3); border-radius: 10px;">
+                        <p><strong>From:</strong> {{ repo_info.owner }}/{{ repo_info.repo }}</p>
+                        <p><strong>Issue #:</strong> {{ repo_info.issue_number }}</p>
+                        <p><strong>Total Participants:</strong> {{ commenters|length if commenters else 'N/A' }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if commenters and commenters|length > 1 %}
+            <div class="section">
+                <h2>All Participants</h2>
+                <p>Thank you to all {{ commenters|length }} participants who joined our raffle!</p>
+                <div class="commenters-list">
+                    {% for commenter in commenters %}
+                    <div class="commenter-item {% if commenter == (winner or winner_name) %}winner-participant{% endif %}">
+                        <img src="https://github.com/{{ commenter }}.png?size=40" 
+                             alt="{{ commenter }}" class="commenter-avatar"
+                             onerror="this.src='https://github.com/github.png?size=40'">
+                        <div class="commenter-name">
+                            @{{ commenter }}
+                            {% if commenter == (winner or winner_name) %}
+                            <div class="winner-badge">🏆 WINNER</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="section text-center">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">Start New Raffle</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by GitHub API and Flask • Made with ❤️ for the community</p>
+        </footer>
     </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Auto-start confetti on results page
+        document.addEventListener('DOMContentLoaded', () => {
+            const app = new GitHubRaffleApp();
+            app.startConfetti();
+        });
+    </script>
+
+    <style>
+        .winner-participant {
+            border: 3px solid #00b894 !important;
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0) !important;
+            transform: scale(1.05);
+        }
+        
+        .winner-badge {
+            background: #00b894;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
 </body>
 </html>
