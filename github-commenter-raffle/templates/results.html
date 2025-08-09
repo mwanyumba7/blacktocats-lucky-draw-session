@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raffle Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Raffle Results</h1>
+        <div id="winner-announcement">
+            <h2>Congratulations!</h2>
+            <p>The winner of the Mona plushie is:</p>
+            <h3 id="winner-name">{{ winner_name }}</h3>
+        </div>
+        <button onclick="window.location.href='/'">Back to Raffle</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

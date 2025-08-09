@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Commenter Raffle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GitHub Commenter Raffle</h1>
+            <p>Join our raffle by commenting on our GitHub issue!</p>
+        </header>
+        <main>
+            <button id="start-raffle" class="btn">Start Raffle</button>
+            <div id="raffle-results" class="hidden">
+                <h2>And the winner is...</h2>
+                <p id="winner-name"></p>
+                <img id="winner-image" src="" alt="Winner" class="hidden">
+            </div>
+        </main>
+        <footer>
+            <p>Powered by GitHub API and Flask</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
