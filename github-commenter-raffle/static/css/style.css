@@ -2,14 +2,16 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
+    padding: 20px;
 }
 
 header {
     background: #35424a;
     color: #ffffff;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
 }
 
 h1 {
@@ -18,8 +20,53 @@ h1 {
 
 .container {
     width: 80%;
+    max-width: 800px;
     margin: auto;
     overflow: hidden;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #0366d6;
+}
+
+.btn {
+    background-color: #0366d6;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0256cc;
 }
 
 .button {
@@ -52,6 +99,44 @@ h1 {
     text-align: center;
 }
 
+#winner-announcement {
+    text-align: center;
+    padding: 30px;
+    background-color: #d4edda;
+    border: 2px solid #c3e6cb;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+#winner-name {
+    color: #0366d6;
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 20px auto;
+    display: block;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #666;
+    font-size: 14px;
+}
+
 .animation {
     transition: transform 0.5s ease;
 }
@@ -67,4 +152,8 @@ h1 {
 
 .fade-in {
     animation: fadeIn 0.5s forwards;
+}
+
+.hidden {
+    display: none;
 }
