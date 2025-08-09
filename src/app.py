@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from flask import Flask, render_template, request, jsonify, flash
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -13,8 +14,17 @@ from utils.helpers import (
     sanitize_input
 )
 
-# Load environment variables from parent directory
-load_dotenv(dotenv_path='../.env')
+# Get the absolute path to the project root directory
+project_root = Path(__file__).parent.parent
+env_file = project_root / '.env'
+
+# Load environment variables from the correct path
+load_dotenv(dotenv_path=env_file)
+
+# Debug: Print environment loading status
+print(f"Loading .env from: {env_file}")
+print(f"Environment file exists: {env_file.exists()}")
+print(f"GitHub token loaded: {'Yes' if os.getenv('GITHUB_TOKEN') else 'No'}")
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.secret_key = os.getenv('FLASK_SECRET_KEY', 'dev-secret-key')
