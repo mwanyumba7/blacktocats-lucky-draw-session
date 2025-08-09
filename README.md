@@ -1,22 +1,84 @@
-# Blacktocats Lucky Draw Ruffle Python App
+# GitHub Commenter Raffle
 
-## Prompt Used 
+Welcome to the GitHub Commenter Raffle project! This application allows you to randomly select a winner from the commenters of a specified GitHub issue. The winner will receive a special prize, such as a Mona plushie!
 
-Watch a basic Python app evolve into an engaging GitHub commenter raffle system. We’ll use the GitHub API to fetch issue commenters, implement a dynamic winner selection process with animations, and deploy the app on GitHub Pages. Discover how GitHub Copilot speeds up development by assisting with API integration, code management, and documentation. The talk will culminate in a live demo, where the app will award a Mona plushie to a lucky audience member. Join us to explore modern Python development techniques that create interactive and deployable applications.
+## Features
 
-##  Add a Winner Function 
-Add state for winner
+- Fetches issue commenters from the GitHub API.
+- Implements a dynamic winner selection process with engaging animations.
+- User-friendly interface for initiating the raffle and displaying results.
 
-Implement selectWinner function
+## Project Structure
 
-Add "Select Winner" button to Ul
+```
+github-commenter-raffle
+├── src
+│   ├── app.py                # Main entry point of the application
+│   ├── api                   # Contains API client for GitHub
+│   │   ├── __init__.py
+│   │   └── github_client.py   # GitHub API client
+│   ├── raffle                # Raffle logic and winner selection
+│   │   ├── __init__.py
+│   │   └── selection.py       # Winner selection logic
+│   ├── ui                    # User interface components and animations
+│   │   ├── __init__.py
+│   │   ├── animations.py      # Animation functions
+│   │   └── components.py      # UI components
+│   └── utils                 # Utility functions
+│       ├── __init__.py
+│       └── helpers.py        # Helper functions
+├── static                    # Static files (CSS and JS)
+│   ├── css
+│   │   └── style.css         # Styles for the application
+│   └── js
+│       └── main.js           # Client-side JavaScript
+├── templates                 # HTML templates
+│   ├── base.html             # Base template
+│   ├── index.html            # Main template for the application
+│   └── results.html          # Results template
+├── tests                     # Unit tests
+│   ├── __init__.py
+│   ├── test_github_client.py  # Tests for GitHubClient
+│   └── test_selection.py      # Tests for RaffleSelector
+├── .gitignore                # Git ignore file
+├── requirements.txt          # Project dependencies
+├── setup.py                  # Setup script for the project
+└── README.md                 # Project documentation
+```
 
-Create winner display section
+## Installation
 
-Add winner announcement text
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/github-commenter-raffle.git
+   cd github-commenter-raffle
+   ```
 
-Implement confetti effect
+2. Install the required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
 
-Ensure a winner is randomly selected
+## Usage
 
-Make sure the winners name is displayed prominently on top
+1. Run the application:
+   ```
+   python src/app.py
+   ```
+
+2. Open your web browser and navigate to `http://localhost:5000` to access the application.
+
+3. Enter the GitHub issue URL to fetch commenters and start the raffle!
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Acknowledgments
+
+- Thanks to GitHub for providing a powerful API.
+- Special thanks to the community for their support and feedback!
